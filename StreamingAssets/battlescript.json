@@ -1,0 +1,978 @@
+{
+  "seed": "c5ede0bc-d8fa-43ee-addb-8f0d1ffac3b8",
+  "initialState": [
+    {
+      "id": "A_Genesis001_Wildwood_0",
+      "owner": "A",
+      "type": "MELEE",
+      "health": 9,
+      "shield": 1,
+      "position": 1,
+      "abilities": [
+        "REACH"
+      ]
+    },
+    {
+      "id": "A_Genesis002_Wildwood_1",
+      "owner": "A",
+      "type": "ARCHER",
+      "health": 9,
+      "shield": 1,
+      "position": 2,
+      "abilities": [
+        "SNEAK"
+      ]
+    },
+    {
+      "id": "A_Genesis003_Wildwood_2",
+      "owner": "A",
+      "type": "MELEE",
+      "health": 8,
+      "shield": 2,
+      "position": 3
+    },
+    {
+      "id": "A_Genesis004_Wildwood_3",
+      "owner": "A",
+      "type": "ARCHER",
+      "health": 8,
+      "shield": 1,
+      "position": 4
+    },
+    {
+      "id": "A_Genesis005_Wildwood_4",
+      "owner": "A",
+      "type": "MAGIC",
+      "health": 11,
+      "shield": 3,
+      "position": 5,
+      "abilities": [
+        "CAMOUFLAGE"
+      ]
+    },
+    {
+      "id": "B_Genesis001_Earth_0",
+      "owner": "B",
+      "type": "MELEE",
+      "health": 10,
+      "shield": 2,
+      "position": 1,
+      "abilities": [
+        "FORCE_FIELD"
+      ]
+    },
+    {
+      "id": "B_Genesis002_Earth_1",
+      "owner": "B",
+      "type": "ARCHER",
+      "health": 7,
+      "shield": 2,
+      "position": 2,
+      "abilities": [
+        "CLOSE_RANGE"
+      ]
+    },
+    {
+      "id": "B_Genesis003_Earth_2",
+      "owner": "B",
+      "type": "MELEE",
+      "health": 8,
+      "shield": 1,
+      "position": 3
+    },
+    {
+      "id": "B_Genesis004_Earth_3",
+      "owner": "B",
+      "type": "ARCHER",
+      "health": 10,
+      "shield": 0,
+      "position": 4
+    },
+    {
+      "id": "B_Genesis005_Earth_4",
+      "owner": "B",
+      "type": "MAGIC",
+      "health": 9,
+      "shield": 2,
+      "position": 5,
+      "abilities": [
+        "THORN"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "action": {
+        "type": "hero_buffs",
+        "teamA": {
+          "heroId": "hero1",
+          "heroName": "The Protagonist",
+          "buffs": [
+            "PLUS_LIFE",
+            "PLUS_SHIELD"
+          ]
+        },
+        "teamB": {
+          "heroId": "hero2",
+          "heroName": "The Antogonist",
+          "buffs": [
+            "MINUS_LIFE",
+            "MINUS_SHIELD"
+          ]
+        }
+      },
+      "diff": {}
+    },
+    {
+      "action": {
+        "type": "battle_start",
+        "teamASpeed": 22,
+        "teamBSpeed": 21,
+        "firstTurn": "playerA"
+      },
+      "diff": {}
+    },
+    {
+      "action": {
+        "type": "round_start",
+        "round": 1
+      },
+      "diff": {}
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "A_Genesis001_Wildwood_0",
+        "target": "B_Genesis001_Earth_0",
+        "damage": 1
+      },
+      "diff": {
+        "updated": [
+          {
+            "id": "B_Genesis001_Earth_0",
+            "owner": "B",
+            "type": "MELEE",
+            "health": 10,
+            "shield": 1,
+            "position": 1,
+            "abilities": [
+              "FORCE_FIELD"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "A_Genesis001_Wildwood_0",
+        "target": "B_Genesis002_Earth_1",
+        "damage": 3
+      },
+      "diff": {
+        "updated": [
+          {
+            "id": "B_Genesis002_Earth_1",
+            "owner": "B",
+            "type": "ARCHER",
+            "health": 6,
+            "shield": 0,
+            "position": 2,
+            "abilities": [
+              "CLOSE_RANGE"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "A_Genesis002_Wildwood_1",
+        "target": "B_Genesis002_Earth_1",
+        "damage": 4
+      },
+      "diff": {
+        "updated": [
+          {
+            "id": "B_Genesis002_Earth_1",
+            "owner": "B",
+            "type": "ARCHER",
+            "health": 2,
+            "shield": 0,
+            "position": 2,
+            "abilities": [
+              "CLOSE_RANGE"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "B_Genesis001_Earth_0",
+        "target": "A_Genesis001_Wildwood_0",
+        "damage": 2
+      },
+      "diff": {
+        "updated": [
+          {
+            "id": "A_Genesis001_Wildwood_0",
+            "owner": "A",
+            "type": "MELEE",
+            "health": 8,
+            "shield": 0,
+            "position": 1,
+            "abilities": [
+              "REACH"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "round_start",
+        "round": 2
+      },
+      "diff": {}
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "A_Genesis001_Wildwood_0",
+        "target": "B_Genesis001_Earth_0",
+        "damage": 1
+      },
+      "diff": {
+        "updated": [
+          {
+            "id": "B_Genesis001_Earth_0",
+            "owner": "B",
+            "type": "MELEE",
+            "health": 10,
+            "shield": 0,
+            "position": 1,
+            "abilities": [
+              "FORCE_FIELD"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "A_Genesis001_Wildwood_0",
+        "target": "B_Genesis002_Earth_1",
+        "damage": 3
+      },
+      "diff": {
+        "updated": [],
+        "removed": [
+          "B_Genesis002_Earth_1"
+        ],
+        "moved": [
+          {
+            "id": "B_Genesis003_Earth_2",
+            "position": 2
+          },
+          {
+            "id": "B_Genesis004_Earth_3",
+            "position": 3
+          },
+          {
+            "id": "B_Genesis005_Earth_4",
+            "position": 4
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "A_Genesis002_Wildwood_1",
+        "target": "B_Genesis003_Earth_2",
+        "damage": 4
+      },
+      "diff": {
+        "updated": [
+          {
+            "id": "B_Genesis003_Earth_2",
+            "owner": "B",
+            "type": "MELEE",
+            "health": 5,
+            "shield": 0,
+            "position": 2
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "B_Genesis001_Earth_0",
+        "target": "A_Genesis001_Wildwood_0",
+        "damage": 2
+      },
+      "diff": {
+        "updated": [
+          {
+            "id": "A_Genesis001_Wildwood_0",
+            "owner": "A",
+            "type": "MELEE",
+            "health": 6,
+            "shield": 0,
+            "position": 1,
+            "abilities": [
+              "REACH"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "round_start",
+        "round": 3
+      },
+      "diff": {}
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "A_Genesis001_Wildwood_0",
+        "target": "B_Genesis001_Earth_0",
+        "damage": 1
+      },
+      "diff": {
+        "updated": [
+          {
+            "id": "B_Genesis001_Earth_0",
+            "owner": "B",
+            "type": "MELEE",
+            "health": 9,
+            "shield": 0,
+            "position": 1,
+            "abilities": [
+              "FORCE_FIELD"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "A_Genesis001_Wildwood_0",
+        "target": "B_Genesis003_Earth_2",
+        "damage": 3
+      },
+      "diff": {
+        "updated": [
+          {
+            "id": "B_Genesis003_Earth_2",
+            "owner": "B",
+            "type": "MELEE",
+            "health": 2,
+            "shield": 0,
+            "position": 2
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "A_Genesis002_Wildwood_1",
+        "target": "B_Genesis003_Earth_2",
+        "damage": 4
+      },
+      "diff": {
+        "updated": [],
+        "removed": [
+          "B_Genesis003_Earth_2"
+        ],
+        "moved": [
+          {
+            "id": "B_Genesis004_Earth_3",
+            "position": 2
+          },
+          {
+            "id": "B_Genesis005_Earth_4",
+            "position": 3
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "B_Genesis001_Earth_0",
+        "target": "A_Genesis001_Wildwood_0",
+        "damage": 2
+      },
+      "diff": {
+        "updated": [
+          {
+            "id": "A_Genesis001_Wildwood_0",
+            "owner": "A",
+            "type": "MELEE",
+            "health": 4,
+            "shield": 0,
+            "position": 1,
+            "abilities": [
+              "REACH"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "B_Genesis004_Earth_3",
+        "target": "A_Genesis001_Wildwood_0",
+        "damage": 5
+      },
+      "diff": {
+        "updated": [],
+        "removed": [
+          "A_Genesis001_Wildwood_0"
+        ],
+        "moved": [
+          {
+            "id": "A_Genesis002_Wildwood_1",
+            "position": 1
+          },
+          {
+            "id": "A_Genesis003_Wildwood_2",
+            "position": 2
+          },
+          {
+            "id": "A_Genesis004_Wildwood_3",
+            "position": 3
+          },
+          {
+            "id": "A_Genesis005_Wildwood_4",
+            "position": 4
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "round_start",
+        "round": 4
+      },
+      "diff": {}
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "B_Genesis001_Earth_0",
+        "target": "A_Genesis002_Wildwood_1",
+        "damage": 2
+      },
+      "diff": {
+        "updated": [
+          {
+            "id": "A_Genesis002_Wildwood_1",
+            "owner": "A",
+            "type": "ARCHER",
+            "health": 8,
+            "shield": 0,
+            "position": 1,
+            "abilities": [
+              "SNEAK"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "B_Genesis004_Earth_3",
+        "target": "A_Genesis002_Wildwood_1",
+        "damage": 5
+      },
+      "diff": {
+        "updated": [
+          {
+            "id": "A_Genesis002_Wildwood_1",
+            "owner": "A",
+            "type": "ARCHER",
+            "health": 3,
+            "shield": 0,
+            "position": 1,
+            "abilities": [
+              "SNEAK"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "round_start",
+        "round": 5
+      },
+      "diff": {}
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "B_Genesis001_Earth_0",
+        "target": "A_Genesis002_Wildwood_1",
+        "damage": 2
+      },
+      "diff": {
+        "updated": [
+          {
+            "id": "A_Genesis002_Wildwood_1",
+            "owner": "A",
+            "type": "ARCHER",
+            "health": 1,
+            "shield": 0,
+            "position": 1,
+            "abilities": [
+              "SNEAK"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "B_Genesis004_Earth_3",
+        "target": "A_Genesis002_Wildwood_1",
+        "damage": 5
+      },
+      "diff": {
+        "updated": [],
+        "removed": [
+          "A_Genesis002_Wildwood_1"
+        ],
+        "moved": [
+          {
+            "id": "A_Genesis003_Wildwood_2",
+            "position": 1
+          },
+          {
+            "id": "A_Genesis004_Wildwood_3",
+            "position": 2
+          },
+          {
+            "id": "A_Genesis005_Wildwood_4",
+            "position": 3
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "round_start",
+        "round": 6
+      },
+      "diff": {}
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "A_Genesis003_Wildwood_2",
+        "target": "B_Genesis001_Earth_0",
+        "damage": 1
+      },
+      "diff": {
+        "updated": [
+          {
+            "id": "B_Genesis001_Earth_0",
+            "owner": "B",
+            "type": "MELEE",
+            "health": 8,
+            "shield": 0,
+            "position": 1,
+            "abilities": [
+              "FORCE_FIELD"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "A_Genesis004_Wildwood_3",
+        "target": "B_Genesis001_Earth_0",
+        "damage": 1
+      },
+      "diff": {
+        "updated": [
+          {
+            "id": "B_Genesis001_Earth_0",
+            "owner": "B",
+            "type": "MELEE",
+            "health": 7,
+            "shield": 0,
+            "position": 1,
+            "abilities": [
+              "FORCE_FIELD"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "B_Genesis001_Earth_0",
+        "target": "A_Genesis003_Wildwood_2",
+        "damage": 2
+      },
+      "diff": {
+        "updated": [
+          {
+            "id": "A_Genesis003_Wildwood_2",
+            "owner": "A",
+            "type": "MELEE",
+            "health": 8,
+            "shield": 0,
+            "position": 1
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "B_Genesis004_Earth_3",
+        "target": "A_Genesis003_Wildwood_2",
+        "damage": 5
+      },
+      "diff": {
+        "updated": [
+          {
+            "id": "A_Genesis003_Wildwood_2",
+            "owner": "A",
+            "type": "MELEE",
+            "health": 3,
+            "shield": 0,
+            "position": 1
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "round_start",
+        "round": 7
+      },
+      "diff": {}
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "A_Genesis003_Wildwood_2",
+        "target": "B_Genesis001_Earth_0",
+        "damage": 1
+      },
+      "diff": {
+        "updated": [
+          {
+            "id": "B_Genesis001_Earth_0",
+            "owner": "B",
+            "type": "MELEE",
+            "health": 6,
+            "shield": 0,
+            "position": 1,
+            "abilities": [
+              "FORCE_FIELD"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "A_Genesis004_Wildwood_3",
+        "target": "B_Genesis001_Earth_0",
+        "damage": 1
+      },
+      "diff": {
+        "updated": [
+          {
+            "id": "B_Genesis001_Earth_0",
+            "owner": "B",
+            "type": "MELEE",
+            "health": 5,
+            "shield": 0,
+            "position": 1,
+            "abilities": [
+              "FORCE_FIELD"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "B_Genesis001_Earth_0",
+        "target": "A_Genesis003_Wildwood_2",
+        "damage": 2
+      },
+      "diff": {
+        "updated": [
+          {
+            "id": "A_Genesis003_Wildwood_2",
+            "owner": "A",
+            "type": "MELEE",
+            "health": 1,
+            "shield": 0,
+            "position": 1
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "B_Genesis004_Earth_3",
+        "target": "A_Genesis003_Wildwood_2",
+        "damage": 5
+      },
+      "diff": {
+        "updated": [],
+        "removed": [
+          "A_Genesis003_Wildwood_2"
+        ],
+        "moved": [
+          {
+            "id": "A_Genesis004_Wildwood_3",
+            "position": 1
+          },
+          {
+            "id": "A_Genesis005_Wildwood_4",
+            "position": 2
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "round_start",
+        "round": 8
+      },
+      "diff": {}
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "B_Genesis001_Earth_0",
+        "target": "A_Genesis004_Wildwood_3",
+        "damage": 2
+      },
+      "diff": {
+        "updated": [
+          {
+            "id": "A_Genesis004_Wildwood_3",
+            "owner": "A",
+            "type": "ARCHER",
+            "health": 7,
+            "shield": 0,
+            "position": 1
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "B_Genesis004_Earth_3",
+        "target": "A_Genesis004_Wildwood_3",
+        "damage": 5
+      },
+      "diff": {
+        "updated": [
+          {
+            "id": "A_Genesis004_Wildwood_3",
+            "owner": "A",
+            "type": "ARCHER",
+            "health": 2,
+            "shield": 0,
+            "position": 1
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "round_start",
+        "round": 9
+      },
+      "diff": {}
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "B_Genesis001_Earth_0",
+        "target": "A_Genesis004_Wildwood_3",
+        "damage": 2
+      },
+      "diff": {
+        "updated": [],
+        "removed": [
+          "A_Genesis004_Wildwood_3"
+        ],
+        "moved": [
+          {
+            "id": "A_Genesis005_Wildwood_4",
+            "position": 1
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "B_Genesis004_Earth_3",
+        "target": "A_Genesis005_Wildwood_4",
+        "damage": 5
+      },
+      "diff": {
+        "updated": [
+          {
+            "id": "A_Genesis005_Wildwood_4",
+            "owner": "A",
+            "type": "MAGIC",
+            "health": 9,
+            "shield": 0,
+            "position": 1,
+            "abilities": [
+              "CAMOUFLAGE"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "round_start",
+        "round": 10
+      },
+      "diff": {}
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "B_Genesis001_Earth_0",
+        "target": "A_Genesis005_Wildwood_4",
+        "damage": 2
+      },
+      "diff": {
+        "updated": [
+          {
+            "id": "A_Genesis005_Wildwood_4",
+            "owner": "A",
+            "type": "MAGIC",
+            "health": 7,
+            "shield": 0,
+            "position": 1,
+            "abilities": [
+              "CAMOUFLAGE"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "B_Genesis004_Earth_3",
+        "target": "A_Genesis005_Wildwood_4",
+        "damage": 5
+      },
+      "diff": {
+        "updated": [
+          {
+            "id": "A_Genesis005_Wildwood_4",
+            "owner": "A",
+            "type": "MAGIC",
+            "health": 2,
+            "shield": 0,
+            "position": 1,
+            "abilities": [
+              "CAMOUFLAGE"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "round_start",
+        "round": 11
+      },
+      "diff": {}
+    },
+    {
+      "action": {
+        "type": "attack",
+        "attacker": "B_Genesis001_Earth_0",
+        "target": "A_Genesis005_Wildwood_4",
+        "damage": 2
+      },
+      "diff": {
+        "updated": [],
+        "removed": [
+          "A_Genesis005_Wildwood_4"
+        ],
+        "moved": []
+      }
+    },
+    {
+      "action": {
+        "type": "battle_end",
+        "winner": "playerB"
+      },
+      "diff": {}
+    }
+  ],
+  "finalState": [
+    {
+      "id": "B_Genesis001_Earth_0",
+      "owner": "B",
+      "type": "MELEE",
+      "health": 5,
+      "shield": 0,
+      "position": 1,
+      "abilities": [
+        "FORCE_FIELD"
+      ]
+    },
+    {
+      "id": "B_Genesis004_Earth_3",
+      "owner": "B",
+      "type": "ARCHER",
+      "health": 10,
+      "shield": 0,
+      "position": 2
+    },
+    {
+      "id": "B_Genesis005_Earth_4",
+      "owner": "B",
+      "type": "MAGIC",
+      "health": 9,
+      "shield": 2,
+      "position": 3,
+      "abilities": [
+        "THORN"
+      ]
+    }
+  ],
+  "winner": "playerB"
+}
