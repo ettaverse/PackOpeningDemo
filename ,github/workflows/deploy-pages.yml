@@ -1,0 +1,107 @@
+
+name: Deploy Unity WebGL to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    steps:
+      # 1. Checkout repository and download Git LFS files
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          lfs: true
+
+      # 2. Ensure actual LFS files are downloaded
+      - name: Pull Git LFS files
+        run: git lfs pull
+
+      # 3. Verify LFS integrity
+      - name: Verify Git LFS
+        run: git lfs fsck
+
+      # 4. Verify Unity build files are not LFS pointers
+      - name: Validate Unity build
+        shell: bash
+        run: |
+          test -f index.html
+          test -d Build
+          test -d TemplateData
+
+          for file in \
+            Build/PackOpening.data.unityweb \
+            Build/PackOpening.framework.js.unityweb \
+            Build/PackOpening.wasm.unityweb
+          do
+            test -f "$file"
+            if head -c 100 "$file" | grep -q 'git-lfs.github.com/spec'; then
+              echo "ERROR: $file is an LFS pointer!"
+              exit 1
+            fi
+          done
+
+          echo "Unity WebGL files validated successfully."
+
+      # 5. Prepare GitHub Pages website
+      - name: Prepare website
+        shell: bash
+        run: |
+          mkdir -p _site
+
+          cp index.html _site/
+          cp -R Build TemplateData _site/
+
+          if [ -d StreamingAssets ]; then
+            cp -R StreamingAssets _site/
+          fi
+
+          if [ -f favicon.ico ]; then
+            cp favicon.ico _site/
+          fi
+
+          touch _site/.nojekyll
+
+          du -sh _site
+
+          SIZE=$(du -sb _site | cut -f1)
+          if [ "$SIZE" -gt 1073741824 ]; then
+            echo "ERROR: Website exceeds GitHub Pages 1GB limit."
+            exit 1
+          fi
+
+      # 6. Configure GitHub Pages
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      # 7. Upload website artifact
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+      # 8. Deploy website
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
