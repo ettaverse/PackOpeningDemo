@@ -1,0 +1,96 @@
+﻿name: Deploy Unity WebGL to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          lfs: true
+
+      - name: Pull Git LFS files
+        run: git lfs pull
+
+      - name: Verify Git LFS
+        run: git lfs fsck
+
+      - name: Validate Unity WebGL build
+        shell: bash
+        run: |
+          test -f index.html
+          test -d Build
+          test -d TemplateData
+
+          for file in \
+            Build/PackOpening.data.unityweb \
+            Build/PackOpening.framework.js.unityweb \
+            Build/PackOpening.wasm.unityweb
+          do
+            test -f "$file"
+
+            if head -c 100 "$file" | grep -q 'git-lfs.github.com/spec'; then
+              echo "ERROR: $file is an LFS pointer"
+              exit 1
+            fi
+          done
+
+      - name: Prepare website
+        shell: bash
+        run: |
+          mkdir -p _site
+          cp index.html _site/
+          cp -R Build TemplateData _site/
+
+          if [ -d StreamingAssets ]; then
+            cp -R StreamingAssets _site/
+          fi
+
+          if [ -f favicon.ico ]; then
+            cp favicon.ico _site/
+          fi
+
+          touch _site/.nojekyll
+
+          du -sh _site
+
+          SIZE=$(du -sb _site | cut -f1)
+          if [ "$SIZE" -gt 1073741824 ]; then
+            echo "ERROR: Website exceeds 1 GB"
+            exit 1
+          fi
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
